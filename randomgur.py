@@ -1,6 +1,7 @@
 import hashlib
 import random
 import sys
+import webbrowser
 from urllib.error import URLError, HTTPError
 from urllib.request import Request, urlopen
 
@@ -52,12 +53,14 @@ class Randomgur:
     def saveImage(self):
         pass
     def main(self):
-        while self.count < 25:
+        while True:
             link = self.generateLink()
             for end in self.ext:
                 if(self.testPage(link + end)):
                     print(link+end)
                     self.count += 1
+                    wait = input("Next ->")
+                    webbrowser.open(link+end)
                     break
                     
             
