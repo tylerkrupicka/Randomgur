@@ -4,15 +4,17 @@ import sys
 import webbrowser
 from urllib.error import URLError, HTTPError
 from urllib.request import Request, urlopen
+import threading
 
 class Randomgur:
 
     def __init__(self):
         self.chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
         self.url = "http://i.imgur.com/"
-        self.ext = ['.jpg','.jpeg','.png']
+        self.ext = ['.jpg','.png']
         self.size = 1024 * 20
         self.count = 0
+        self.links = []
 
     def generateLink(self):
         elements = []
@@ -27,7 +29,6 @@ class Randomgur:
     def testPage(self,url):
         req = Request(url)
         data = None
-
         try:
             data = urlopen(req)
         except HTTPError as e:
@@ -51,6 +52,8 @@ class Randomgur:
                 return False
                         
     def saveImage(self):
+        pass
+    def operate(self):
         pass
     def main(self):
         while True:
